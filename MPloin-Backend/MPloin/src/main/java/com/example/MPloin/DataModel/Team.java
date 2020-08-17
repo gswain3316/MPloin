@@ -3,6 +3,7 @@ package com.example.MPloin.DataModel;
 import java.util.Objects;
 
 public class Team {
+    
     private long id;
     private String name;
     private int size;
