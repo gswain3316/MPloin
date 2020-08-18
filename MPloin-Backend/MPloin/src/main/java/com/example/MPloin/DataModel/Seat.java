@@ -8,19 +8,19 @@ public class Seat {
     private String empl_email;
     private boolean loggedIn;
     private String status;
-    private String machine_id;
+    private String machine_status;
 
     public Seat(int seat_number) {
         this.seat_number = seat_number;
     }
 
-    public Seat(int seat_number, String empl_name, String empl_email, boolean loggedIn, String status, String machine_id) {
+    public Seat(int seat_number, String empl_name, String empl_email, boolean loggedIn, String status, String machine_status) {
         this.seat_number = seat_number;
         this.empl_name = empl_name;
         this.empl_email = empl_email;
         this.loggedIn = loggedIn;
         this.status = status;
-        this.machine_id = machine_id;
+        this.machine_status = machine_status;
     }
 
     public int getSeat_number() {
@@ -63,12 +63,12 @@ public class Seat {
         this.status = status;
     }
 
-    public String getMachine_id() {
-        return machine_id;
+    public String getmachine_status() {
+        return machine_status;
     }
 
-    public void setMachine_id(String machine_id) {
-        this.machine_id = machine_id;
+    public void setmachine_status(String machine_status) {
+        this.machine_status = machine_status;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class Seat {
                 ", empl_email='" + empl_email + '\'' +
                 ", loggedIn=" + loggedIn +
                 ", status='" + status + '\'' +
-                ", machine_id='" + machine_id + '\'' +
+                ", machine_status='" + machine_status + '\'' +
                 '}';
     }
 
@@ -93,11 +93,11 @@ public class Seat {
                 Objects.equals(empl_name, seat.empl_name) &&
                 Objects.equals(empl_email, seat.empl_email) &&
                 Objects.equals(status, seat.status) &&
-                Objects.equals(machine_id, seat.machine_id);
+                Objects.equals(machine_status, seat.machine_status);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(seat_number, empl_name, empl_email, loggedIn, status, machine_id);
+        return Objects.hash(seat_number, empl_name, empl_email, loggedIn, status, machine_status);
     }
 }
