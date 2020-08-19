@@ -2,7 +2,8 @@ package com.example.MPloin.Controller;
 
 import java.net.URI;
 
-import org.apache.catalina.authenticator.SavedRequest;
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class registrationController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<Object> registerConfirmed(@RequestBody Employee empl)
+	public ResponseEntity<Object> registerConfirmed(@Valid @RequestBody Employee empl) throws Exception
 	{
 		Employee emp = empRepo.save(empl);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{company}").
