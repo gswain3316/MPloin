@@ -100,7 +100,12 @@ public class Seat {
                 Objects.equals(machine_status, seat.machine_status);
     }
 
-    @Override
+    public Seat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
     public int hashCode() {
         return Objects.hash(seat_number, empl_name, empl_email, loggedIn, status, machine_status);
     }
