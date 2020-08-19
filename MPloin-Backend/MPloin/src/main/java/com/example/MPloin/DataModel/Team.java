@@ -86,8 +86,7 @@ public class Team{
 	}
 	public Team() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
+  }
 	
 	
 	
