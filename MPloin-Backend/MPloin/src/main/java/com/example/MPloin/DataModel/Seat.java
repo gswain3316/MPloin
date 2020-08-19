@@ -14,7 +14,11 @@ public class Seat {
         this.seat_number = seat_number;
     }
 
-    public Seat(int seat_number, String empl_name, String empl_email, boolean loggedIn, String status, String machine_status) {
+    public Seat() {
+		super();
+	}
+
+	public Seat(int seat_number, String empl_name, String empl_email, boolean loggedIn, String status, String machine_status) {
         this.seat_number = seat_number;
         this.empl_name = empl_name;
         this.empl_email = empl_email;

@@ -97,6 +97,9 @@ public class Employee {
 			return false;
 		return true;
 	}
+	public Employee() {
+		super();
+	}
 	
 	
 
