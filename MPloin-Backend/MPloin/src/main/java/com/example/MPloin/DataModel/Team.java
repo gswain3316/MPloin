@@ -84,6 +84,10 @@ public class Team{
 			return false;
 		return true;
 	}
+	public Team() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	
