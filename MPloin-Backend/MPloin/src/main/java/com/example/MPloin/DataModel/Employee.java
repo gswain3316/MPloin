@@ -1,12 +1,28 @@
 package com.example.MPloin.DataModel;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Employee {
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
+	@Column
 	private String empl_name;
+	@Column
 	private String empl_email;
+	@Column
 	private String gender;
+	@Column
 	private String company;
+	@Column
 	private String team_name;
+	
 	public String getEmpl_name() {
 		return empl_name;
 	}
@@ -37,19 +53,7 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	@Override
-	public String toString() {
-		return "Employee [empl_name=" + empl_name + ", empl_email=" + empl_email + ", gender=" + gender + ", company="
-				+ company + ", team_name=" + team_name + "]";
-	}
-	public Employee(String empl_name, String empl_email, String gender, String company, String team_name) {
-		super();
-		this.empl_name = empl_name;
-		this.empl_email = empl_email;
-		this.gender = gender;
-		this.company = company;
-		this.team_name = team_name;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -58,6 +62,7 @@ public class Employee {
 		result = prime * result + ((empl_email == null) ? 0 : empl_email.hashCode());
 		result = prime * result + ((empl_name == null) ? 0 : empl_name.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((team_name == null) ? 0 : team_name.hashCode());
 		return result;
 	}
@@ -90,12 +95,37 @@ public class Employee {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (team_name == null) {
 			if (other.team_name != null)
 				return false;
 		} else if (!team_name.equals(other.team_name))
 			return false;
 		return true;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", empl_name=" + empl_name + ", empl_email=" + empl_email + ", gender=" + gender
+				+ ", company=" + company + ", team_name=" + team_name + "]";
+	}
+	public Employee(Long id, String empl_name, String empl_email, String gender, String company, String team_name) {
+		super();
+		this.id = id;
+		this.empl_name = empl_name;
+		this.empl_email = empl_email;
+		this.gender = gender;
+		this.company = company;
+		this.team_name = team_name;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public Employee() {
 		super();
