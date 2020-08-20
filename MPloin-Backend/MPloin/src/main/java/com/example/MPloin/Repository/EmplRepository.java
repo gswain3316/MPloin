@@ -8,5 +8,5 @@ import com.example.MPloin.DataModel.Employee;
 
 @Repository
 public interface EmplRepository extends JpaRepository<Employee, Long> {
-		
+	
 }
