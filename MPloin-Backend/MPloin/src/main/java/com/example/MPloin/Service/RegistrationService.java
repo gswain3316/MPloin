@@ -18,7 +18,8 @@ public class RegistrationService {
 
 	public ResponseEntity<Object> joinTeam (Long team_code){
 		
-		Optional<Team> teamDetails = teamrepo.findByTeam_code(team_code);
+		System.out.println(team_code);
+		Optional<Team> teamDetails = teamrepo.findById(team_code);
 		
 		if(!teamDetails.isPresent())
 			return ResponseEntity.notFound().build();

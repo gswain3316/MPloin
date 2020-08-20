@@ -10,6 +10,6 @@ import com.example.MPloin.DataModel.Team;
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Long> {
 	
-	Optional<Team> findByTeam_code(Long team_code);
-	
+	Optional<Team> findById(Long id); 
+		
 }

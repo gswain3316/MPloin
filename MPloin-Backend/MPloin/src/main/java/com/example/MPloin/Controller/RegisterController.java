@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,8 +58,9 @@ public class RegisterController {
 	public ResponseEntity<Object> registerTeam (@Valid @RequestBody Team team) throws Exception
 	{
 		Team new_team = teamRepo.save(team);
-		
-		return null;
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{team_code}")
+				.buildAndExpand(new_team.getTeam_code()).toUri();
+		return ResponseEntity.created(location).build();
 	}
 	
 }
