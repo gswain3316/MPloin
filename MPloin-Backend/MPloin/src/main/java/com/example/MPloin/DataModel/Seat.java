@@ -1,112 +1,76 @@
 package com.example.MPloin.DataModel;
 
-import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import lombok.Data;
+
+@Entity
+@Data
 public class Seat {
-    private int seat_number;
-    private String empl_name;
-    private String empl_email;
-    private boolean loggedIn;
-    private String status;
-    private String machine_status;
-
-    public Seat(int seat_number) {
-        this.seat_number = seat_number;
-    }
-
-    public Seat() {
-		super();
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long seat_id;
+	// Seat Number has to auto-incremented from back-end.
+	@Column
+    private Integer seat_number;
+	@Column
+	private String empl_name;
+	@Column
+	private String empl_email;
+	@Column
+	private Boolean loggedIn;
+	@Column
+	private String status;
+	@Column
+	private String machine_status;
+	public Long getSeat_id() {
+		return seat_id;
 	}
-
-	public Seat(int seat_number, String empl_name, String empl_email, boolean loggedIn, String status, String machine_status) {
-        this.seat_number = seat_number;
-        this.empl_name = empl_name;
-        this.empl_email = empl_email;
-        this.loggedIn = loggedIn;
-        this.status = status;
-        this.machine_status = machine_status;
-    }
-
-    public int getSeat_number() {
-        return seat_number;
-    }
-
-    public void setSeat_number(int seat_number) {
-        this.seat_number = seat_number;
-    }
-
-    public String getEmpl_name() {
-        return empl_name;
-    }
-
-    public void setEmpl_name(String empl_name) {
-        this.empl_name = empl_name;
-    }
-
-    public String getEmpl_email() {
-        return empl_email;
-    }
-
-    public void setEmpl_email(String empl_email) {
-        this.empl_email = empl_email;
-    }
-
-    public boolean isLoggedIn() {
-        return loggedIn;
-    }
-
-    public void setLoggedIn(boolean loggedIn) {
-        this.loggedIn = loggedIn;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getmachine_status() {
-        return machine_status;
-    }
-
-    public void setmachine_status(String machine_status) {
-        this.machine_status = machine_status;
-    }
-
-    @Override
-    public String toString() {
-        return "Seat{" +
-                "seat_number=" + seat_number +
-                ", empl_name='" + empl_name + '\'' +
-                ", empl_email='" + empl_email + '\'' +
-                ", loggedIn=" + loggedIn +
-                ", status='" + status + '\'' +
-                ", machine_status='" + machine_status + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Seat seat = (Seat) o;
-        return seat_number == seat.seat_number &&
-                loggedIn == seat.loggedIn &&
-                Objects.equals(empl_name, seat.empl_name) &&
-                Objects.equals(empl_email, seat.empl_email) &&
-                Objects.equals(status, seat.status) &&
-                Objects.equals(machine_status, seat.machine_status);
-    }
-
-    public Seat() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setSeat_id(Long seat_id) {
+		this.seat_id = seat_id;
 	}
-
-	@Override
-    public int hashCode() {
-        return Objects.hash(seat_number, empl_name, empl_email, loggedIn, status, machine_status);
-    }
+	public Integer getSeat_number() {
+		return seat_number;
+	}
+	public void setSeat_number(Integer seat_number) {
+		this.seat_number = seat_number;
+	}
+	public String getEmpl_name() {
+		return empl_name;
+	}
+	public void setEmpl_name(String empl_name) {
+		this.empl_name = empl_name;
+	}
+	public String getEmpl_email() {
+		return empl_email;
+	}
+	public void setEmpl_email(String empl_email) {
+		this.empl_email = empl_email;
+	}
+	public Boolean getLoggedIn() {
+		return loggedIn;
+	}
+	public void setLoggedIn(Boolean loggedIn) {
+		this.loggedIn = loggedIn;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getMachine_status() {
+		return machine_status;
+	}
+	public void setMachine_status(String machine_status) {
+		this.machine_status = machine_status;
+	}
+	
+	
+    
 }
