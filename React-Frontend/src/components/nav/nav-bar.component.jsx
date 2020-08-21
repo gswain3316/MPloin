@@ -4,12 +4,12 @@ class NavBar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-trans">
           <a className="navbar-brand" href="/">
             <h1>MPloin</h1>
           </a>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler navbar-toggler-right"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNavDropdown"
@@ -35,33 +35,6 @@ class NavBar extends Component {
                 <a className="nav-link" href="/">
                   Pricing
                 </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="/"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  More
-                </a>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <a className="dropdown-item" href="/">
-                    Action
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    Another action
-                  </a>
-                  <a className="dropdown-item" href="/">
-                    Something else here
-                  </a>
-                </div>
               </li>
             </ul>
           </div>

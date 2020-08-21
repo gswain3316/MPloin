@@ -1,6 +1,7 @@
 import React from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../buttons/custom-btn.component";
+import { Link } from "react-router-dom";
 import "./sign-in.styles.scss";
 
 class SignIn extends React.Component {
@@ -8,10 +9,22 @@ class SignIn extends React.Component {
     super(props);
 
     this.state = {
-      email: "",
+      username: "",
       password: "",
     };
   }
+
+  handleSubmit() {
+    console.log("submit handled");
+  }
+
+  handleChange() {
+    console.log("change handled");
+  }
+
+  handleClick = () => {
+    console.log("All good");
+  };
 
   render() {
     return (
@@ -21,11 +34,11 @@ class SignIn extends React.Component {
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
-            name="email"
+            name="username"
             type="email"
             handleChange={this.handleChange}
-            value={this.state.email}
-            label="email"
+            value={this.state.username}
+            label="Username"
             required
           />
           <FormInput
@@ -33,11 +46,14 @@ class SignIn extends React.Component {
             type="password"
             value={this.state.password}
             handleChange={this.handleChange}
-            label="password"
+            label="Password"
             required
           />
           <div className="buttons">
             <CustomButton type="submit"> Sign in </CustomButton>
+            <Link to="/signup">
+              <CustomButton isAdditionalSignUpButton>Sign Up</CustomButton>
+            </Link>
           </div>
         </form>
       </div>

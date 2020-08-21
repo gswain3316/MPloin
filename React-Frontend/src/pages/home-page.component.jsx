@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import NavBar from "../components/nav/nav-bar.component";
 
 class HomePage extends Component {
   render() {
     return (
       <div>
-        <h1>We are Under Construction Now!!!</h1>
-        <Link to="/directory">
-          <h2>Temporary Link to Team</h2>
-        </Link>
+        <NavBar />
       </div>
     );
   }
