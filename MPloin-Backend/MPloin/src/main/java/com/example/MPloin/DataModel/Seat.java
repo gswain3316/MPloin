@@ -1,32 +1,35 @@
 package com.example.MPloin.DataModel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
 
 import lombok.Data;
 
-@Entity
+
+//@Entity
 @Data
 public class Seat {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long seat_id;
 	// Seat Number has to auto-incremented from back-end.
-	@Column
+	/*
+	 * @OneToOne Team teams;
+	 */
+	
     private Integer seat_number;
-	@Column
-	private String empl_name;
-	@Column
-	private String empl_email;
-	@Column
+	
+    private Employee empl;
+	
 	private Boolean loggedIn;
-	@Column
+	
 	private String status;
-	@Column
+	
+	public Employee getEmpl() {
+		return empl;
+	}
+	public void setEmpl(Employee empl) {
+		this.empl = empl;
+	}
 	private String machine_status;
 	public Long getSeat_id() {
 		return seat_id;
@@ -40,18 +43,7 @@ public class Seat {
 	public void setSeat_number(Integer seat_number) {
 		this.seat_number = seat_number;
 	}
-	public String getEmpl_name() {
-		return empl_name;
-	}
-	public void setEmpl_name(String empl_name) {
-		this.empl_name = empl_name;
-	}
-	public String getEmpl_email() {
-		return empl_email;
-	}
-	public void setEmpl_email(String empl_email) {
-		this.empl_email = empl_email;
-	}
+	
 	public Boolean getLoggedIn() {
 		return loggedIn;
 	}

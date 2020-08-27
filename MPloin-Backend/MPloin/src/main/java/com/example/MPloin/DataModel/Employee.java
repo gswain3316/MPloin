@@ -1,45 +1,51 @@
 package com.example.MPloin.DataModel;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import lombok.Data;
 
-@Entity
 @Data 
 public class Employee {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	@Column 
+	private String id;
+	
 	@NotBlank(message = "Name is mandatory")
 	private String empl_name;
-	@Column	
+	
+	@Indexed(unique = true)
 	@NotBlank(message = "Email is mandatory")
 	private String empl_email;
-	@Column 
+	
+	@NotBlank(message = "Password is mandatory")
+	private String empl_password;
+	
 	@NotBlank(message = "Gender is mandatory")
 	private String gender;
-	@Column 
-	@NotBlank(message = "Company Name is mandatory")
-	private String company;
-	@Column 
-	@NotBlank(message = "Team Name is mandatory")
-	private String team_name;
-	@Column 
-	private Long team_code;
+	/*
+	 * 
+	 * 
+	 * @NotBlank(message = "Company Name is mandatory") private String company;
+	 * 
+	 * 
+	 * 
+	 * @NotBlank(message = "Team Name is mandatory") private String team_name;
+	 */
+//	 
+//	private Long team_code;
+//	@ElementCollection
+//	@CollectionTable(name="Team", joinColumns = @JoinColumn(name="team_code"))
+//	@ManyToOne(cascade = CascadeType.ALL)	
+//	private List<Team> teams;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
 	public String getEmpl_name() {
 		return empl_name;
 	}
@@ -58,23 +64,49 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getCompany() {
-		return company;
+
+	/*
+	 * public String getCompany() { return company; } public void setCompany(String
+	 * company) { this.company = company; } public String getTeam_name() { return
+	 * team_name; } public void setTeam_name(String team_name) { this.team_name =
+	 * team_name; }
+	 */
+//	public Long getTeam_code() {
+//		return team_code;
+//	}
+//	public void setTeam_code(Long team_code) {
+//		this.team_code = team_code;
+//	}
+	public String getEmpl_password() {
+		return empl_password;
 	}
-	public void setCompany(String company) {
-		this.company = company;
+	public void setEmpl_password(String empl_password) {
+		this.empl_password = empl_password;
 	}
-	public String getTeam_name() {
-		return team_name;
+//	public List<Team> getTeams() {
+//		return teams;
+//	}
+//	public void setTeams(List<Team> teams) {
+//		teams = teams;
+//	}
+	public Employee(@NotBlank(message = "Name is mandatory") String empl_name,
+			@NotBlank(message = "Email is mandatory") String empl_email,
+			@NotBlank(message = "Password is mandatory") String empl_password,
+			@NotBlank(message = "Gender is mandatory") String gender) {
+		super();
+		this.empl_name = empl_name;
+		this.empl_email = empl_email;
+		this.empl_password = empl_password;
+		this.gender = gender;
 	}
-	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+	@Override
+	public String toString() {
+		return "Employee [empl_name=" + empl_name + ", empl_email=" + empl_email + ", empl_password=" + empl_password
+				+ ", gender=" + gender + "]";
 	}
-	public Long getTeam_code() {
-		return team_code;
-	}
-	public void setTeam_code(Long team_code) {
-		this.team_code = team_code;
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 	
