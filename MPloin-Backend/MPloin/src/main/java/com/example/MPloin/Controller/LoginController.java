@@ -44,7 +44,7 @@ public class LoginController {
 	@PostMapping("/login")
 	public ResponseEntity<?> loginUser(@RequestBody Employee loginDetail) {
 		try {
-			String userId = loginDetail.getEmpl_email();
+			String userId = loginDetail.getemail();
 			String password = loginDetail.getEmpl_password();
 			
 			if(userId == null || password == null) {

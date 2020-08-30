@@ -21,7 +21,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public boolean saveUser(Employee user) throws  UserAlreadyExistsException {
-		Optional<Employee> u1 = userRepo.findById(user.getEmpl_email());
+		Optional<Employee> u1 = userRepo.findById(user.getemail());
 		if(u1.isPresent()) {
 			throw new UserAlreadyExistsException("User with Id already exists");
 		}
