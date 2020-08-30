@@ -9,10 +9,12 @@ import javax.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
 @Data 
+@Document
 public class Employee {
 	
 	@Id
@@ -23,7 +25,7 @@ public class Employee {
 	
 	@Indexed(unique = true)
 	@NotBlank(message = "Email is mandatory")
-	private String empl_email;
+	private String email;
 	
 	@NotBlank(message = "Password is mandatory")
 	private String empl_password;
@@ -52,11 +54,11 @@ public class Employee {
 	public void setEmpl_name(String empl_name) {
 		this.empl_name = empl_name;
 	}
-	public String getEmpl_email() {
-		return empl_email;
+	public String getemail() {
+		return email;
 	}
-	public void setEmpl_email(String empl_email) {
-		this.empl_email = empl_email;
+	public void setemail(String email) {
+		this.email = email;
 	}
 	public String getGender() {
 		return gender;
@@ -90,18 +92,18 @@ public class Employee {
 //		teams = teams;
 //	}
 	public Employee(@NotBlank(message = "Name is mandatory") String empl_name,
-			@NotBlank(message = "Email is mandatory") String empl_email,
+			@NotBlank(message = "Email is mandatory") String email,
 			@NotBlank(message = "Password is mandatory") String empl_password,
 			@NotBlank(message = "Gender is mandatory") String gender) {
 		super();
 		this.empl_name = empl_name;
-		this.empl_email = empl_email;
+		this.email = email;
 		this.empl_password = empl_password;
 		this.gender = gender;
 	}
 	@Override
 	public String toString() {
-		return "Employee [empl_name=" + empl_name + ", empl_email=" + empl_email + ", empl_password=" + empl_password
+		return "Employee [empl_name=" + empl_name + ", email=" + email + ", empl_password=" + empl_password
 				+ ", gender=" + gender + "]";
 	}
 	public Employee() {

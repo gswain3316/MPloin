@@ -6,39 +6,56 @@ import javax.annotation.Generated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+import com.example.MPloin.Utils.CascadeSave;
 
 import lombok.Data;
 
 //@Embeddable
 @Data
+@Document
 public class Team {
 
 	@Id
-	private Long team_code;
+	private ObjectId id;
+	@Indexed(unique = true)
+	private Integer team_code;
 //	@OneToMany
 //	Employee empl;
-	@NotBlank(message = "Company name is mandatory")
+//	@NotBlank(message = "Company name is mandatory")
+	
+	@Field
 	private String company;
-	@NotBlank(message = "Team name is mandatory")
+//	@NotBlank(message = "Team name is mandatory")
+	
+	@Field
 	private String team_name;
-	@NotNull(message = "Team size is mandatory")
+//	@NotNull(message = "Team size is mandatory")
+	
+	@Field
 	private Integer size;
 	
-	private List<Seat> empl_seat;
 //	@Column
 //	private Long seat_id;
 //	@OneToMany(mappedBy = "teams")
 //	@Embedded	
-	 
+//	@DBRef(lazy = true)
+//	@CascadeSave
+	@Field
 	private List<Seat> seats;
 	 
 
-	public Long getTeam_code() {
+	public Integer getTeam_code() {
 		return team_code;
 	}
 
-	public void setTeam_code(Long team_code) {
+	public void setTeam_code(Integer team_code) {
 		this.team_code = team_code;
 	}
 
@@ -80,4 +97,17 @@ public class Team {
 		this.seats = seats;
 	}
 
+	public Team(Integer team_code, @NotBlank(message = "Company name is mandatory") String company,
+			@NotBlank(message = "Team name is mandatory") String team_name,
+			@NotNull(message = "Team size is mandatory") Integer size, List<Seat> seats) {
+		super();
+		this.team_code = team_code;
+		this.company = company;
+		this.team_name = team_name;
+		this.size = size;
+		this.seats = seats;
+	}
+
+	
+	
 }

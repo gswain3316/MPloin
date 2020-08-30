@@ -1,8 +1,10 @@
 package com.example.MPloin.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,10 @@ public class RegistrationService {
 			}
 		
 		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+
+	public List<Employee> getEmployeeByEx(Employee emp) {
+		Example<Employee> empl_ex = Example.of(emp); 
+		return empRepo.findAll(empl_ex);
 	}
 }

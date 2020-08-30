@@ -1,42 +1,44 @@
 package com.example.MPloin.DataModel;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Data;
 
 
 //@Entity
 @Data
+@Document
 public class Seat {
 	
 	@Id
-	private Long seat_id;
+	private ObjectId id;
 	// Seat Number has to auto-incremented from back-end.
 	/*
 	 * @OneToOne Team teams;
 	 */
-	
+	@Field
     private Integer seat_number;
 	
-    private Employee empl;
+	@Field
+    private String email;
 	
+	@Field
 	private Boolean loggedIn;
 	
+	@Field
 	private String status;
 	
-	public Employee getEmpl() {
-		return empl;
+	public String getemail() {
+		return email;
 	}
-	public void setEmpl(Employee empl) {
-		this.empl = empl;
+	public void setemail(String email) {
+		this.email = email;
 	}
 	private String machine_status;
-	public Long getSeat_id() {
-		return seat_id;
-	}
-	public void setSeat_id(Long seat_id) {
-		this.seat_id = seat_id;
-	}
+	
 	public Integer getSeat_number() {
 		return seat_number;
 	}
@@ -60,6 +62,15 @@ public class Seat {
 		return machine_status;
 	}
 	public void setMachine_status(String machine_status) {
+		this.machine_status = machine_status;
+	}
+	public Seat(Integer seat_number, String email, Boolean loggedIn, String status,
+			String machine_status) {
+		super();
+		this.seat_number = seat_number;
+		this.email = email;
+		this.loggedIn = loggedIn;
+		this.status = status;
 		this.machine_status = machine_status;
 	}
 	

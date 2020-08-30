@@ -1,6 +1,8 @@
 package com.example.MPloin.Controller;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -17,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.MPloin.DataModel.Employee;
+import com.example.MPloin.DataModel.Seat;
 import com.example.MPloin.DataModel.Team;
 import com.example.MPloin.Repository.EmplRepository;
+import com.example.MPloin.Repository.SeatRepository;
 import com.example.MPloin.Repository.TeamRepository;
 import com.example.MPloin.Service.RegistrationService;
 
@@ -32,14 +36,26 @@ public class RegisterController {
 	private TeamRepository teamRepo;
 	
 	@Autowired
+	private SeatRepository seatRepo;
+	
+	@Autowired
 	private RegistrationService registerServ;
 	
 	
 	@GetMapping("/test")
 	public String test()
 	{
-		empRepo.save(new Employee("Gaurav", "gswain3316@gmail.com", "qwerty@123", "Male"));
-		return "Test Controller !!";
+		List<Seat> seatList = new ArrayList<Seat>();
+		seatList = seatRepo.findAll();
+		
+		seatList.add(new Seat(5, "jeff@gmail.com", true, "Tea Break", "Working Fine"));
+		seatList.add(new Seat(6, "elon@gmail.com", true, "Available", "Working Fine"));
+		seatList.add(new Seat(7, "bill@gmail.com", false, "Vacation", "Working Fine"));
+		seatList.add(new Seat(8, "mark@gmail.com", true, "Pee Break", "Working Fine"));
+		 
+		
+		teamRepo.insert(new Team(005, "Mploin", "CoFounders", 4, seatList));
+		return "team document created multiple seat documents !!";
 	}
 	
 	@GetMapping("/joinTeam")
@@ -53,7 +69,7 @@ public class RegisterController {
 	{
 		Employee emp = empRepo.save(empl);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{empl_email}").
-				buildAndExpand(emp.getEmpl_email()).toUri();
+				buildAndExpand(emp.getemail()).toUri();
 //		return "Registration is completed successfully !!";
 		return ResponseEntity.created(location).build();
 	}
@@ -78,6 +94,10 @@ public class RegisterController {
 		  	return "Error, Password not saved. TRY AGAIN !!"; 
 	  }
 	 
-	
+	  @GetMapping("/findEmployeeByExample")
+	  public List<Employee> getEmployeeByExample(@RequestBody Employee emp)
+	  {
+		  return registerServ.getEmployeeByEx(emp);
+	  }
 	  
 }

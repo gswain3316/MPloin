@@ -13,5 +13,5 @@ import com.example.MPloin.DataModel.Employee;
 public interface EmplRepository extends MongoRepository<Employee, String> {
 	
 //	@Query("select e from employee e where e.empl_email = ?1")
-	public Optional<Employee> findById(String empl_email);	
+	public Optional<Employee> findByEmail(String empl_email);	
 }
