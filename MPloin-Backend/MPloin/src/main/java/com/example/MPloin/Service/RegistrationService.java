@@ -33,14 +33,14 @@ public class RegistrationService {
 			return ResponseEntity.status(HttpStatus.OK).body(teamDetails);
 	}
 	
-	public ResponseEntity<Object> registerPassword (String empl_email, String empl_password)
+	public ResponseEntity<Object> registerPassword (String empl_email, String password)
 	{
 		Optional<Employee> empDetails = empRepo.findById(empl_email);
 		if(!empDetails.isPresent())
 			return ResponseEntity.notFound().build();
 		else {
 			Employee emp = empDetails.get();
-			emp.setEmpl_password(empl_password);
+			emp.setpassword(password);
 			empRepo.save(emp);
 			}
 		

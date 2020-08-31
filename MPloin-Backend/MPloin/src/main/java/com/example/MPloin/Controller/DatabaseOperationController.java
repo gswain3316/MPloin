@@ -64,13 +64,13 @@ public class DatabaseOperationController {
 			
 			empl.setemail(employee.getemail());
 			empl.setEmpl_name(employee.getEmpl_name());
-			empl.setEmpl_password(employee.getEmpl_password());
+			empl.setpassword(employee.getpassword());
 			empl.setGender(employee.getGender());
 			emp_repo.save(empl);
 			
 			/*
 			 * mongoOps.updateFirst(new Query(Criteria.where("email").is(email)),
-			 * Update.update("empl_password", password), Employee.class);
+			 * Update.update("password", password), Employee.class);
 			 */
 			return empl; 	
 			}

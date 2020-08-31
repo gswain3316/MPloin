@@ -28,7 +28,7 @@ public class Employee {
 	private String email;
 	
 	@NotBlank(message = "Password is mandatory")
-	private String empl_password;
+	private String password;
 	
 	@NotBlank(message = "Gender is mandatory")
 	private String gender;
@@ -79,11 +79,11 @@ public class Employee {
 //	public void setTeam_code(Long team_code) {
 //		this.team_code = team_code;
 //	}
-	public String getEmpl_password() {
-		return empl_password;
+	public String getpassword() {
+		return password;
 	}
-	public void setEmpl_password(String empl_password) {
-		this.empl_password = empl_password;
+	public void setpassword(String password) {
+		this.password = password;
 	}
 //	public List<Team> getTeams() {
 //		return teams;
@@ -93,17 +93,17 @@ public class Employee {
 //	}
 	public Employee(@NotBlank(message = "Name is mandatory") String empl_name,
 			@NotBlank(message = "Email is mandatory") String email,
-			@NotBlank(message = "Password is mandatory") String empl_password,
+			@NotBlank(message = "Password is mandatory") String password,
 			@NotBlank(message = "Gender is mandatory") String gender) {
 		super();
 		this.empl_name = empl_name;
 		this.email = email;
-		this.empl_password = empl_password;
+		this.password = password;
 		this.gender = gender;
 	}
 	@Override
 	public String toString() {
-		return "Employee [empl_name=" + empl_name + ", email=" + email + ", empl_password=" + empl_password
+		return "Employee [empl_name=" + empl_name + ", email=" + email + ", password=" + password
 				+ ", gender=" + gender + "]";
 	}
 	public Employee() {

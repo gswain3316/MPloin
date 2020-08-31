@@ -31,7 +31,7 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Override
 	public Employee findByUserIdAndPassword(String userId, String password) throws UserNotFoundException{
-		Employee user = userRepo.findByUserIdAndPassword(userId, password);
+		Employee user = userRepo.findByEmailAndPassword(userId, password);
 		if(user == null) {
 			throw new UserNotFoundException("UserId and Password Incorrect");
 			

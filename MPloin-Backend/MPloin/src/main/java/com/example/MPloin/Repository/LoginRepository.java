@@ -7,6 +7,6 @@ import com.example.MPloin.DataModel.Employee;
 
 @Repository
 public interface LoginRepository extends MongoRepository<Employee, String>  {
-	Employee findByUserIdAndPassword(String userId, String password);
+	Employee findByEmailAndPassword(String email, String password);
 
 }

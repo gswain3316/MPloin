@@ -45,7 +45,7 @@ public class LoginController {
 	public ResponseEntity<?> loginUser(@RequestBody Employee loginDetail) {
 		try {
 			String userId = loginDetail.getemail();
-			String password = loginDetail.getEmpl_password();
+			String password = loginDetail.getpassword();
 			
 			if(userId == null || password == null) {
 				throw new Exception("Username or Password cannot be empty");
@@ -54,7 +54,7 @@ public class LoginController {
 			if(user == null) {
 				throw new Exception("User with given Id does not exists");
 			}
-			String pwd = user.getEmpl_password();
+			String pwd = user.getpassword();
 			if(!password.equals(pwd)) {
 				throw new Exception("Invalid login credential, Please check username and password");
 			}
