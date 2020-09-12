@@ -1,8 +1,11 @@
 package com.example.MPloin.Controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.reactive.HttpHandlerAutoConfiguration.AnnotationConfig;
@@ -23,7 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.MPloin.DataModel.Employee;
+import com.example.MPloin.DataModel.Team;
 import com.example.MPloin.Repository.EmplRepository;
+import com.example.MPloin.Repository.TeamRepository;
 import com.example.MPloin.Service.DatabaseOperationService;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -39,12 +44,23 @@ public class DatabaseOperationController {
 	DatabaseOperationService datapOps;
 	
 	@Autowired
+	TeamRepository teamRepo;
+	
+	@Autowired
 	MongoOperations mongoOps;
 	
 	@GetMapping("/getAllEmployees")
 	public ResponseEntity<Object> getAll()
 	{
 		return ResponseEntity.status(HttpStatus.OK).body(emp_repo.findAll()); 
+	}
+	
+	@PostMapping("/addTeams")
+	public ResponseEntity<Object> addTeams (@RequestBody Team team){
+		
+		teamRepo.insert(team);
+		List<Team> response = teamRepo.findAll().stream().collect(Collectors.toList());
+		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 	
 	@PostMapping("/addEmployee")

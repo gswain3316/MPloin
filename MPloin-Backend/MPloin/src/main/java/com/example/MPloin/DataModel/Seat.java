@@ -73,6 +73,15 @@ public class Seat {
 		this.status = status;
 		this.machine_status = machine_status;
 	}
+	public Seat() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Seat [id=" + id + ", seat_number=" + seat_number + ", email=" + email + ", loggedIn=" + loggedIn
+				+ ", status=" + status + ", machine_status=" + machine_status + "]";
+	}
 	
 	
     

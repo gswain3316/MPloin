@@ -25,6 +25,7 @@ public class Team {
 	@Id
 	private ObjectId id;
 	@Indexed(unique = true)
+	@Field
 	private Integer team_code;
 //	@OneToMany
 //	Employee empl;
@@ -45,7 +46,7 @@ public class Team {
 //	private Long seat_id;
 //	@OneToMany(mappedBy = "teams")
 //	@Embedded	
-//	@DBRef(lazy = true)
+	@DBRef(lazy = true)
 //	@CascadeSave
 	@Field
 	private List<Seat> seats;
@@ -106,6 +107,17 @@ public class Team {
 		this.team_name = team_name;
 		this.size = size;
 		this.seats = seats;
+	}
+
+	public Team() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Team [id=" + id + ", team_code=" + team_code + ", company=" + company + ", team_name=" + team_name
+				+ ", size=" + size + ", seats=" + seats + "]";
 	}
 
 	
